@@ -5,6 +5,7 @@ import './App.css';
 // const logo = require("./logo.svg") as string;
 
 function App() {
+  const unused = 'something';
   return (
     <div className="App">
       <header className="App-header">
