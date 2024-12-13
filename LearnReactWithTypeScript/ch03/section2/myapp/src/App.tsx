@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Alert from './Alert';
+
+// const logo = require("./logo.svg") as string;
 
 function App() {
+  const unused = 'something';
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -18,6 +22,10 @@ function App() {
         >
           Learn React
         </a>
+
+        <Alert heading={'success'} closeable>
+          Everything is really good
+        </Alert>
       </header>
     </div>
   );
