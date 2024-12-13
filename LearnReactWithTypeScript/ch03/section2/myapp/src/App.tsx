@@ -1,10 +1,12 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import Alert from './Alert';
 
 // const logo = require("./logo.svg") as string;
 
 function App() {
+  const unused = 'something';
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +22,10 @@ function App() {
         >
           Learn React
         </a>
+
+        <Alert heading={'success'} closeable>
+          Everything is really good
+        </Alert>
       </header>
     </div>
   );
