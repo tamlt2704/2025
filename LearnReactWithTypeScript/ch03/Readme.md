@@ -211,3 +211,17 @@ export default config;
 
 npm run start
 ```    
+
+
+
+* Create project with create react app 
+
+```
+npx create-react-app myapp --template typescript
+npx tsc --init
+update reportWebVitals.ts 
+npm install --save-dev @types/react @types/react-dom
+npm i -D @testing-library/react
+npm i --save-dev @types/jest @testing-library/jest-dom
+npm install @types/testing-library__jest-dom -D
+```
