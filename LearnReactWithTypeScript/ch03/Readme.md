@@ -1,22 +1,25 @@
 1. setup app with webpack
 
-* create index.html
+- create index.html
 
-* create package.json
-    ```
-    {
-        "name": "my-app",
-        "description": "My React and Typescript app",
-        "version": "0.0.1"
-    }
-    ```
+- create package.json
 
-* add Typescript
+  ```
+  {
+      "name": "my-app",
+      "description": "My React and Typescript app",
+      "version": "0.0.1"
+  }
+  ```
+
+- add Typescript
+
 ```
 npm install --save-dev typescript
 ```
 
-* add tsconfig.json
+- add tsconfig.json
+
 ```
 {
     "compilerOptions": {
@@ -38,57 +41,63 @@ npm install --save-dev typescript
 }
 ```
 
+\*\* setting noEmit = true to supress the Typescript compiler from doing any traspilation
 
-** setting noEmit = true to supress the Typescript compiler from doing any traspilation
+\*\* setting allowSyntheticDefaultImports and esModuleInterop to true allows React to be imported as default import, like the following
 
-** setting allowSyntheticDefaultImports and esModuleInterop to true allows React to be imported as default import, like the following 
 ```
 import React from 'react'
 ```
-**wihtout these settings set to true, React woule have to be imported like this 
+
+\*\*wihtout these settings set to true, React woule have to be imported like this
+
 ```
 import * from 'react'
 ```
 
-** settings forceConsistentCasingInFileNames to true enables the type checking process to check the casing referend filenames in import statements are consistent.
+\*\* settings forceConsistentCasingInFileNames to true enables the type checking process to check the casing referend filenames in import statements are consistent.
 
-* adding react 
+- adding react
 
 ```
 npm install react react-dom
 ```
 
-* react doesn't include typescript
+- react doesn't include typescript
 
 ```
 npm install --save-dev @types/react @types/react-dom
 ```
 
-* root component will be in a file called index.tsx in the *src* folder
+- root component will be in a file called index.tsx in the _src_ folder
 
-* adding babel
+- adding babel
+
 ```
 npm install --save-dev @babel/core
 npm i -D @babel/core
 ```
 
-* install @babel/preset-env allows latest javascript feature to be used 
+- install @babel/preset-env allows latest javascript feature to be used
+
 ```
 npm i -D @babel/preset-env
 ```
 
-* install @babel/preset-react that enabled react code to be transfomed to javascript
+- install @babel/preset-react that enabled react code to be transfomed to javascript
+
 ```
 npm i -D @babel/preset-react
 ```
 
+- install @babel/preset-typescript that enabled typescript code to be transfomed to javascript
 
-* install @babel/preset-typescript that enabled typescript code to be transfomed to javascript
 ```
 npm i -D @babel/preset-typescript
 ```
 
-* in summary 
+- in summary
+
 ```
 npm install react react-dom
 npm install --save-dev @types/react @types/react-dom
@@ -98,7 +107,8 @@ npm i -D @babel/preset-react
 npm i -D @babel/preset-typescript
 ```
 
-* babel.conf 
+- babel.conf
+
 ```
 {
     "presets": [
@@ -117,9 +127,10 @@ npm i -D @babel/preset-typescript
 }
 ```
 
-* glue everything with webpack
+- glue everything with webpack
 
-* install webpack
+- install webpack
+
 ```
 npm i -D webpack webpack-cli
 
@@ -128,19 +139,21 @@ npm i -D webpack-dev-server # host webapp and automitically updates as changes a
 npm i -D babel-loader # allows babel to transpile reat and typescript to JS
 ```
 
-* webpack can create index.html file that hosts the react app, we want webpack to use our index.html file in the src folder. html-webpack-plugin is capable of doing this
+- webpack can create index.html file that hosts the react app, we want webpack to use our index.html file in the src folder. html-webpack-plugin is capable of doing this
+
 ```
-npm i -D html-webpack-plugin 
+npm i -D html-webpack-plugin
 ```
 
+- configure webpack
+- install ts-node which allows configuration to be defined in a typescript
 
-* configure webpack 
-* install ts-node which allows configuration to be defined in a typescript
 ```
 npm i -D ts-node
 ```
 
-* webpack.dev.config.ts
+- webpack.dev.config.ts
+
 ```
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -148,8 +161,8 @@ import {
   Configuration as WebpackConfig,
   HotModuleReplacementPlugin,
 } from 'webpack';
-import { 
-  Configuration as WebpackDevServerConfig 
+import {
+  Configuration as WebpackDevServerConfig
 } from 'webpack-dev-server';
 
 type Configuration = WebpackConfig & {
@@ -198,30 +211,80 @@ const config: Configuration = {
 export default config;
 ```
 
-* HtmlWebpackPlugin will be used to create index.html
-* mode: development
-* output.publicPath is the root path in the app
-* entry: tell webpack where the react app's entry point is , which is index.tsx in our project
+- HtmlWebpackPlugin will be used to create index.html
+- mode: development
+- output.publicPath is the root path in the app
+- entry: tell webpack where the react app's entry point is , which is index.tsx in our project
 
-* to start application. add followingt to package.json 
+- to start application. add followingt to package.json
+
 ```
 "scripts": {
         "start": "webpack serve --config webpack.dev.config.ts"
-    }, 
+    },
 
 npm run start
-```    
+```
 
-
-
-* Create project with create react app 
+- Create project with create react app
 
 ```
 npx create-react-app myapp --template typescript
 npx tsc --init
-update reportWebVitals.ts 
+update reportWebVitals.ts
 npm install --save-dev @types/react @types/react-dom
 npm i -D @testing-library/react
 npm i --save-dev @types/jest @testing-library/jest-dom
 npm install @types/testing-library__jest-dom -D
 ```
+
+- Add linting to VS code
+
+```
+install ESLint from Microsft
+go to config Ctrl + , --> search eslint: probe -> make sure typescript and typescriptreact are in the list
+
+```
+
+- add code formating
+
+```
+npm i -D prettier
+```
+
+- prettier has overllaping style rules with ESLint so install the following two libraries to allow prettier to take responsibilitiy for the styling rules from ESLint
+
+```
+npm i -D eslint-config-prettier eslint-plugin-prettier
+```
+
+- the eslint configuration needs to be updated, update package.json
+
+.prettierrc.json
+
+```
+{
+    "printWidth": 100,
+    "singleQuote": true,
+    "semi": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "endOfLine": "auto"
+ }
+
+line wraps at 100 characters
+string qualifiers are single quotes
+semicolons are placed at the end of the statements
+the indentation level is two spaces
+a trailing comma is added to multiline arrays and  object
+existing line ending are maintained
+```
+
+- install Prettier - Code formater
+- go to settings (Ctrm + ,) -> select format on save
+- default formatter -> workspace -> select Prettier Code formater
+
+* create production build
+  npm run build
+  npm install -g serve
+  serve -s build
