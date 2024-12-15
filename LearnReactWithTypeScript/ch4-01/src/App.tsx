@@ -1,8 +1,9 @@
 import React from 'react';
-// import logo from './logo.svg';
+// import { ReactComponent as logo } from './logo.svg';
 import './App.css';
 import PersonScore from './PersonScore';
 import ReducerPersonScore from './ReducerPersonScore';
+import Alert from './Alert';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       App
       <PersonScore />;
       <ReducerPersonScore />
+      <Alert />
     </div>
   );
 }
