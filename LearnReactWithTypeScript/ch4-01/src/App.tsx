@@ -4,15 +4,22 @@ import './App.css';
 import PersonScore from './PersonScore';
 import ReducerPersonScore from './ReducerPersonScore';
 import Alert from './Alert';
+import ProductsPage from './ProductsPage';
+import Header from './Header';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      App
-      <PersonScore />;
-      <ReducerPersonScore />
-      <Alert />
-    </div>
+    <>
+      <Header />
+      <Outlet />
+      {/* <div className="App">
+        <ProductsPage />
+        <PersonScore />;
+        <ReducerPersonScore />
+        <Alert />
+      </div> */}
+    </>
   );
 }
 
