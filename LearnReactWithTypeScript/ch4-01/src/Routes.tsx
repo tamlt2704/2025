@@ -12,6 +12,7 @@ import ContactPageUncontrolledField, {
   contactPageUncontrolledFieldAction,
 } from './pages/ContactPageUncontrolledFields';
 import ThankyouPage from './pages/ThankyouPage';
+import ContactReactHookForm from './pages/ContactReactHookForm';
 
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 const router = createBrowserRouter([
@@ -25,8 +26,8 @@ const router = createBrowserRouter([
       { path: 'products', element: <ProductsPage /> },
       {
         path: 'contact',
-        element: <ContactPageUncontrolledField />,
-        action: contactPageUncontrolledFieldAction,
+        element: <ContactReactHookForm />,
+        // action: contactPageUncontrolledFieldAction,
       },
       { path: 'thankyou/:name', element: <ThankyouPage /> },
       { path: 'products/:id', element: <ProductPage /> },
