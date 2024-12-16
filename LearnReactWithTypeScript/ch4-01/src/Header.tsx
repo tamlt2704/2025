@@ -33,6 +33,10 @@ export default function Header() {
         <NavLink to={'contact'} className={'p-1 border-solid'}>
           Contact
         </NavLink>
+
+        <NavLink to={'thankyou'} className={'p-1 border-solid'}>
+          Thankyou
+        </NavLink>
         <form className="relative text-right" onSubmit={handleSubmit}>
           <input
             type="search"

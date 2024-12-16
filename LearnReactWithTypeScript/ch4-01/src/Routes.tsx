@@ -8,7 +8,10 @@ import ProductPage from './pages/ProductPage';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import Contactpage from './pages/Contactpage';
-import ContactPageUncontrolledField from './pages/ContactPageUncontrolledFields';
+import ContactPageUncontrolledField, {
+  contactPageUncontrolledFieldAction,
+} from './pages/ContactPageUncontrolledFields';
+import ThankyouPage from './pages/ThankyouPage';
 
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 const router = createBrowserRouter([
@@ -20,7 +23,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: 'products', element: <ProductsPage /> },
-      { path: 'contact', element: <ContactPageUncontrolledField /> },
+      {
+        path: 'contact',
+        element: <ContactPageUncontrolledField />,
+        action: contactPageUncontrolledFieldAction,
+      },
+      { path: 'thankyou/:name', element: <ThankyouPage /> },
       { path: 'products/:id', element: <ProductPage /> },
       {
         path: 'admin',
