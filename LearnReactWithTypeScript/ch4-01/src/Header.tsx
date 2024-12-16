@@ -1,14 +1,16 @@
 import React, { FormEvent } from 'react';
-import { Link, NavLink, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function Header() {
   const [searchParam, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     // throw new Error('Function not implemented.');
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const search = formData.get('search') as string;
-    setSearchParams({ search });
+    // setSearchParams({ search });
+    navigate(`/products/?search=${search}`);
   }
 
   return (
@@ -22,6 +24,10 @@ export default function Header() {
           }
         >
           Products
+        </NavLink>
+
+        <NavLink to={'admin'} className={'p-1 border-solid'}>
+          Admin
         </NavLink>
         <form className="relative text-right" onSubmit={handleSubmit}>
           <input
