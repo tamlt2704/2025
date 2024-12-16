@@ -8,15 +8,16 @@ type Contact = {
 };
 const fieldStyle = 'flex flex-col mb-2';
 
-export default function Contactpage() {
-  const [contact, setContact] = useState<Contact>({
-    name: '',
-    email: '',
-    reason: '',
-    notes: '',
-  });
+export default function ContactPageUncontrolledField() {
   function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const contact = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      reason: formData.get('reason'),
+      notes: formData.get('notes'),
+    } as Contact;
     console.log('submited', contact);
   }
 
@@ -31,8 +32,7 @@ export default function Contactpage() {
             className="border-solid border-2 border-red-500"
             type="text"
             id="name"
-            value={contact.name}
-            onChange={(e) => setContact({ ...contact, name: e.target.value })}
+            name="name"
           />
         </div>
 
@@ -42,18 +42,12 @@ export default function Contactpage() {
             className="border-solid border-2 border-red-500"
             type="text"
             id="email"
-            value={contact.email}
-            onChange={(e) => setContact({ ...contact, email: e.target.value })}
+            name="email"
           />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason"> Reason for contact </label>
-          <select
-            className="border-solid border-2 border-red-500"
-            id="reason"
-            value={contact.reason}
-            onChange={(e) => setContact({ ...contact, email: e.target.value })}
-          >
+          <select className="border-solid border-2 border-red-500" id="reason" name="reason">
             <option value=""></option>
             <option value="support">Support</option>
             <option value="feedback">Feedback</option>
@@ -62,7 +56,7 @@ export default function Contactpage() {
         </div>
         <div className={fieldStyle}>
           <label htmlFor="notes">Additional notes</label>
-          <textarea id="notes" className="border-solid border-2 border-red-500" />
+          <textarea id="notes" className="border-solid border-2 border-red-500" name="notes" />
         </div>
         <div className={fieldStyle}>
           <button type="submit" className="mt-2 h-10 px-6 font-semibold bg-black text-white">
