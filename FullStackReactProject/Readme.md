@@ -142,3 +142,26 @@ ch03
     })
     .then(res => res.json())
     .then(console.log)
+
+ch04
+cd backend
+npm uninstall husky lint-staged @commitlint/cli @commitlint/config-conventional
+
+1. tanstack query
+   npm install @tanstack/react-query@5.12.2
+
+2. touch .env
+
+ch05
+touch backend/.dockerignore
+docker image build -t blog-backend backend/
+docker run -it -e PORT=3001 -e DATABASE_URL=mongodb://host.docker.internal:27017/blog -p 3001:3001 blog-backend
+
+docker build -t blog-frontend .
+docker run -it -p 3000:80 blog-frontend
+
+touch compose.yaml
+
+mkdir .github
+mkdir .github/workflows
+touch .github/workflows/frontend-ci.yaml
