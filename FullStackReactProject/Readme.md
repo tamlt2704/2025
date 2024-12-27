@@ -74,3 +74,18 @@ docs:
 perf:
 style:
 test:
+
+ch02
+
+1. mkdir backend
+2. touch backend/simpleweb.js
+   node backend/simpleweb.js
+   curl localhost:3000
+
+3. docker mongo
+   docker run -d --name dbserver -p 27017:27017 --restart unless-stopped mongo:6.0.4
+
+4. install mongodb
+   npm install mongodb@6.3.0
+
+   5. touch backend/mongodbweb.js
