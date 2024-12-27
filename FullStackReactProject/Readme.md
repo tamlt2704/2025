@@ -88,4 +88,57 @@ ch02
 4. install mongodb
    npm install mongodb@6.3.0
 
-   5. touch backend/mongodbweb.js
+5. touch backend/mongodbweb.js
+
+ch03
+
+1. update .eslintrrc.json
+2. rm index.html vite.config.js
+3. rm -fr public backend src
+4. install dependencies
+   npm uninstall --save react react-dom
+   npm uninstall --save-dev vite @types/react \
+    @types/react-dom @vitejs/plugin-react \
+    eslint-plugin-jsx-a11y eslint-plugin-react
+5. edit package.json remove the dev, build, and preview
+6. mkdir -p src/{db,services,routes}
+7. install monogoose
+   npm install mongoose@8.0.2
+
+8. testing service
+   npm install --save-dev jest@29.7.0 \
+    mongodb-memory-server@9.1.1
+
+9. mkdir src/test
+   touch src/test/globalSetup.js
+   touch src/test/globalTeardown.js
+   touch src/test/setupFileAfterEnv.js
+   touch jest.config.json
+10. touch src/services/posts.js
+11. mkdir src/**tests**
+    touch src/**tests**/posts.test.js
+
+12. install express
+    npm install express@4.18.2
+    npm install dotenv@16.3.1
+13. touch .env
+14. install nodemon
+    npm install --save-dev nodemon@3.0.2
+    touch nodemon.json
+15. touch src/routes/posts.js
+16. POST routes
+    npm install body-parser@1.20.2
+    npm install cors@2.8.5
+
+17. try api
+    fetch('http://localhost:3001/api/v1/posts')
+    .then(res => res.json())
+    .then(console.log)
+
+    fetch('http://localhost:3001/api/v1/posts', {
+    method: 'POST',
+    body: JSON.stringify({"title": "Test Post"}),
+    header: {"Content-Type": "application/json"},
+    })
+    .then(res => res.json())
+    .then(console.log)
