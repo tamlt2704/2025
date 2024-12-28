@@ -165,3 +165,31 @@ touch compose.yaml
 mkdir .github
 mkdir .github/workflows
 touch .github/workflows/frontend-ci.yaml
+
+ch06
+
+touch backend/src/db/models/users.js
+cd backend
+npm install bcrypt@5.1.1
+
+touch backend/src/services/users.js
+touch backend/src/routes/users.js
+
+const res = await fetch('http://localhost:3001/api/v1/user/signup', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ 'username': 'dan', 'password': 'hunter2'
+})
+})
+console.log(await res.json())
+
+cd backend
+npm install jsonwebtoken@9.0.2
+npm install express-jwt@8.4.1
+
+mkdir backend/src/middleware
+touch backend/src/middleware/jwt.js
+
+npm install react-router-dom@6.21.0
+
+touch src/components/Header.jsx
